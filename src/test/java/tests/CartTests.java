@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import pages.CartPage;
 import pages.ProductsPage;
 
-import static data.CommonData.masterPassword;
-import static data.CommonData.userStandard;
+import static data.TestData.MASTER_PASSWORD;
+import static data.TestData.USER_STANDARD;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -15,8 +15,8 @@ public class CartTests extends Hooks {
     @Test
     public void addProductToCart(){
         assertEquals("Swag Labs", homePage.getPageTitle(), "Home page title is incorrect");
-        homePage.setUsername(userStandard);
-        homePage.setPassword(masterPassword);
+        homePage.setUsername(USER_STANDARD);
+        homePage.setPassword(MASTER_PASSWORD);
         ProductsPage productsPage = homePage.clickLoginButton();
         assertEquals("Products", productsPage.getPageTitle(), "Products page title is incorrect");
         System.out.println("User logged in successfully and is on the products page");

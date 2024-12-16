@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import pages.ProductsPage;
 
 import static common.Utils.*;
-import static data.CommonData.*;
+import static data.TestData.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LoginTests extends Hooks {
@@ -13,8 +13,8 @@ public class LoginTests extends Hooks {
     @Test
     public void testLoginSuccessful(){
         assertEquals("Swag Labs", homePage.getPageTitle(), "Home page title is incorrect");
-        homePage.setUsername(userStandard);
-        homePage.setPassword(masterPassword);
+        homePage.setUsername(USER_STANDARD);
+        homePage.setPassword(MASTER_PASSWORD);
         ProductsPage productsPage = homePage.clickLoginButton();
         assertEquals("Products", productsPage.getPageTitle(), "Products page title is incorrect");
         productsPage.clickMenu();

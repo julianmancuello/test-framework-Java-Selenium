@@ -10,7 +10,7 @@ import pages.HomePage;
 
 import java.util.Arrays;
 
-import static data.CommonData.*;
+import static data.TestData.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class Hooks {
@@ -23,7 +23,7 @@ public class Hooks {
         ContextStore.loadProperties("src/test/resources/test.properties");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(setChromeOptions());
-        driver.get(urlSauceDemo);
+        driver.get(URL_SAUCE_DEMO);
         homePage = new HomePage(driver);
     }
 

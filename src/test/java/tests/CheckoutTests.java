@@ -4,7 +4,7 @@ import hooks.Hooks;
 import org.junit.jupiter.api.Test;
 import pages.*;
 
-import static data.CommonData.*;
+import static data.TestData.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -13,8 +13,8 @@ public class CheckoutTests extends Hooks {
     @Test
     public void testCheckoutSuccessful(){
         assertEquals("Swag Labs", homePage.getPageTitle(), "Home page title is incorrect");
-        homePage.setUsername(userStandard);
-        homePage.setPassword(masterPassword);
+        homePage.setUsername(USER_STANDARD);
+        homePage.setPassword(MASTER_PASSWORD);
         ProductsPage productsPage = homePage.clickLoginButton();
         assertEquals("Products", productsPage.getPageTitle(), "Products page title is incorrect");
         System.out.println("User logged in successfully and is on the products page");
@@ -25,9 +25,9 @@ public class CheckoutTests extends Hooks {
         CheckoutInformationPage checkoutInformationPage = cartPage.clickCheckoutButton();
         assertEquals("Checkout: Your Information", checkoutInformationPage.getPageTitle(), "Checkout Information page title is incorrect");
         System.out.println("User enters the checkout information page");
-        checkoutInformationPage.setFirstName(firstName);
-        checkoutInformationPage.setLastName(lastName);
-        checkoutInformationPage.setPostalCode(postalCode);
+        checkoutInformationPage.setFirstName(FIRST_NAME);
+        checkoutInformationPage.setLastName(LAST_NAME);
+        checkoutInformationPage.setPostalCode(POSTAL_CODE);
         CheckoutConfirmationPage checkoutConfirmationPage = checkoutInformationPage.clickContinueButton();
         assertEquals("Checkout: Overview", checkoutConfirmationPage.getPageTitle(), "Checkout Confirmation page title is incorrect");
         System.out.println("User enters the checkout confirmation page");

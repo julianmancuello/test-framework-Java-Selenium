@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>testautomationu</groupId>
-  <artifactId>test-framework-UI-Java-Selenium-JUnit5</artifactId>
+  <artifactId>test-framework-Java-Selenium</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 

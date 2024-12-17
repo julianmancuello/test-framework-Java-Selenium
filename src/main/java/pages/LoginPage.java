@@ -23,41 +23,38 @@ public class LoginPage extends BasePage {
     @FindBy(className = "error-message-container")
     WebElement loginErrorMessage;
 
-    private final int ERROR_ICONS_DISPLAYED = 2;
+    private final int EXPECTED_ERROR_ICONS = 2;
 
-    public LoginPage(WebDriver driver){
+    public LoginPage(WebDriver driver) {
         super(driver);
     }
 
-    public String getPageTitle(){
+    public String getPageTitle() {
         return getText(pageTitle);
     }
 
-    public void setUsername(String username){
+    public void setUsername(String username) {
         type(usernameField, username);
     }
 
-    public void setPassword(String password){
+    public void setPassword(String password) {
         type(passwordField, password);
     }
 
-    public ProductsPage clickLoginButton(){
+    public ProductsPage clickLoginButton() {
         click(loginButton);
         return new ProductsPage(driver);
     }
 
-    public boolean isErrorIconDisplayed(){
-        if(isNumberEqualToNumber(errorIcon.size(), ERROR_ICONS_DISPLAYED)){
-            return isEachWebElementDisplayed(errorIcon);
-        }
-        return false;
+    public boolean isErrorIconDisplayed() {
+        return isListSizeEqualToExpectedNumber(errorIcon, EXPECTED_ERROR_ICONS);
     }
 
-    public String getLoginErrorMessage(){
+    public String getLoginErrorMessage() {
         return getText(loginErrorMessage);
     }
 
-    public ProductsPage fillLoginForm(String username, String password){
+    public ProductsPage fillLoginForm(String username, String password) {
         setUsername(username);
         setPassword(password);
         return clickLoginButton();

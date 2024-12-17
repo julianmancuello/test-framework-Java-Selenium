@@ -103,6 +103,10 @@ public class Utils {
         return isEachElementInListPresentInPage(webElements, doublesStored, element -> parsePrice(element.getText()));
     }
 
+    public static boolean isListSizeEqualToExpectedNumber(List<WebElement> listOfWebElements, int expectedNumber){
+        return isNumberEqualToNumber(listOfWebElements.size(), expectedNumber);
+    }
+
     public static boolean isEachWebElementDisplayed(List<WebElement> webElements) {
         for (WebElement element : webElements) {
             if (!element.isDisplayed()) {

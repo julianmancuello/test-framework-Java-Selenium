@@ -12,18 +12,24 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CartTests extends Hooks {
 
     @Test
+    public void testCheckTitleOnCartPage(){
+        ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
+        CartPage cartPage = productsPage.clickCart();
+
+        assertEquals(CART_PAGE_TITLE, cartPage.getPageTitle(), "Cart page title is incorrect.");
+        System.out.println("Cart page title is correct");
+    }
+
+    @Test
     public void addProductToCart(){
-        assertEquals(LOGIN_PAGE_TITLE, loginPage.getPageTitle(), "Home page title is incorrect");
-        loginPage.setUsername(USER_STANDARD);
-        loginPage.setPassword(MASTER_PASSWORD);
-        ProductsPage productsPage = loginPage.clickLoginButton();
+        ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
         assertEquals(PRODUCTS_PAGE_TITLE, productsPage.getPageTitle(), "Products page title is incorrect");
         System.out.println("User logged in successfully and is on the products page");
         productsPage.addToCartNRandomProducts();
         assertTrue(productsPage.isAddToCartButtonChangedToRemove());
         assertTrue(productsPage.isCartBadgeCountEqualToQuantityOfSelectedProducts());
         CartPage cartPage = productsPage.clickCart();
-        assertEquals(CART_PAGE_TITLE, cartPage.getPageTitle(), "Cart page title is incorrect.");
+
         System.out.println("User enters the cart page");
         assertTrue(cartPage.isEachSelectedProductPresentInCart());
         assertTrue(cartPage.isPriceOfEachSelectedProductInCartCorrect());

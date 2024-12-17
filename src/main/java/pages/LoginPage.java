@@ -8,7 +8,7 @@ import java.util.List;
 
 import static common.Utils.*;
 
-public class HomePage extends BasePage {
+public class LoginPage extends BasePage {
 
     @FindBy(className = "login_logo")
     WebElement pageTitle;
@@ -25,7 +25,7 @@ public class HomePage extends BasePage {
 
     private final int ERROR_ICONS_DISPLAYED = 2;
 
-    public HomePage(WebDriver driver){
+    public LoginPage(WebDriver driver){
         super(driver);
     }
 

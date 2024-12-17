@@ -6,7 +6,7 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import pages.HomePage;
+import pages.LoginPage;
 
 import java.util.Arrays;
 
@@ -16,7 +16,7 @@ import static data.TestData.*;
 public class Hooks {
 
     private WebDriver driver;
-    protected HomePage homePage;
+    protected LoginPage loginPage;
 
     @BeforeEach
     public void setUp(){
@@ -24,7 +24,7 @@ public class Hooks {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(setChromeOptions());
         driver.get(URL_SAUCE_DEMO);
-        homePage = new HomePage(driver);
+        loginPage = new LoginPage(driver);
     }
 
     @AfterEach

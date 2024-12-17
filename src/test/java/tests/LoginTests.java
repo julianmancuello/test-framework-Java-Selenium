@@ -2,7 +2,6 @@ package tests;
 
 import hooks.Hooks;
 import org.junit.jupiter.api.Test;
-import pages.ProductsPage;
 
 import static common.Utils.*;
 import static data.TestData.*;
@@ -17,7 +16,7 @@ public class LoginTests extends Hooks {
     }
 
     @Test
-    public void testLoginSuccessful(){
+    public void testLoginSuccessfulWithValidCredentials(){
         loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
 
         assertEquals(PRODUCTS_PAGE_URL, loginPage.getCurrentUrl(), "Login failed, user was unable to log in");
@@ -25,10 +24,10 @@ public class LoginTests extends Hooks {
     }
 
     @Test
-    public void testLoginFailedDisplayErrorIconsAndMessage(){
+    public void testLoginAttemptWithInvalidCredentialsDisplaysErrorIconsAndMessage(){
         loginPage.fillLoginForm(generateRandomAlphanumericString(10, 15), generateRandomAlphanumericString(10, 20));
 
-        assertTrue(loginPage.isErrorIconDisplayed(), "Error icons are not displayed");
+        assertTrue(loginPage.isErrorIconCountEqualToExpectedQuantity(), "Error icons are not displayed");
         assertEquals(LOGIN_FAILED_MSG, loginPage.getLoginErrorMessage(), "Error message do not match");
         System.out.println("Login attempt failed as expected. Error icons and error message are displayed.");
     }

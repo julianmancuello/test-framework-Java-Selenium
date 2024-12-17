@@ -47,7 +47,7 @@ public class LoginPage extends BasePage {
         return new ProductsPage(driver);
     }
 
-    public boolean isErrorIconDisplayed() {
+    public boolean isErrorIconCountEqualToExpectedQuantity() {
         return isListSizeEqualToExpectedNumber(errorIcon, EXPECTED_ERROR_ICONS);
     }
 

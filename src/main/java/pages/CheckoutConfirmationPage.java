@@ -77,19 +77,19 @@ public class CheckoutConfirmationPage extends BasePage {
     public boolean isSubtotalCorrect() {
         double subtotalInPage = parsePrice(getText(subtotalPrice));
         double subtotalStored = sumListOfNumbers(ContextStore.get("selectedProductPrices"));
-        return isCalculationMatchingNumberInPage(subtotalStored, subtotalInPage, "subtotal");
+        return isNumberEqualToNumber(subtotalStored, subtotalInPage);
     }
 
     public boolean isTaxAmountCorrect() {
         double taxAmountInPage = parsePrice(getText(taxAmount));
         double taxCalculated = calculateTaxes(sumListOfNumbers(ContextStore.get("selectedProductPrices")), TAX_RATE);
-        return isCalculationMatchingNumberInPage(taxCalculated, taxAmountInPage, "tax");
+        return isNumberEqualToNumber(taxCalculated, taxAmountInPage);
     }
 
     public boolean isTotalCorrect() {
         double totalInPage = parsePrice(getText(totalPrice));
         double totalCalculated = calculateTotalWithTaxes(sumListOfNumbers(ContextStore.get("selectedProductPrices")), TAX_RATE);
-        return isCalculationMatchingNumberInPage(totalCalculated, totalInPage, "total");
+        return isNumberEqualToNumber(totalCalculated, totalInPage);
     }
 
     public CheckoutCompletePage clickFinishButton() {

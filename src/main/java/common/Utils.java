@@ -107,15 +107,6 @@ public class Utils {
         return isNumberEqualToNumber(listOfWebElements.size(), expectedNumber);
     }
 
-    public static boolean isEachWebElementDisplayed(List<WebElement> webElements) {
-        for (WebElement element : webElements) {
-            if (!element.isDisplayed()) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     @SuppressWarnings("unchecked")
     public static <T extends Number> T sumListOfNumbers(List<T> listOfNumbers) {
         if (listOfNumbers.isEmpty()) {
@@ -153,15 +144,6 @@ public class Utils {
 
     public static <T extends Number> double roundTo2Digits(T number) {
         return (double) Math.round(number.doubleValue() * 100) / 100;
-    }
-
-    public static boolean isCalculationMatchingNumberInPage(double calculatedNumber, double numberInPage, String calculatedItem) {
-        if (isNumberEqualToNumber(calculatedNumber, numberInPage)) {
-            System.out.println("The " + calculatedItem + " displayed matches the calculated " + calculatedItem + ".");
-            return true;
-        }
-        System.out.println("The " + calculatedItem + " displayed " + numberInPage + " does not match the calculated " + calculatedItem + " " + calculatedNumber);
-        return false;
     }
 
     public static String extractLocatorFromWebElement(WebElement webElement) {

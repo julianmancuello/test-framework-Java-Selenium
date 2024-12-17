@@ -29,6 +29,7 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+    @Override
     public String getPageTitle() {
         return getText(pageTitle);
     }

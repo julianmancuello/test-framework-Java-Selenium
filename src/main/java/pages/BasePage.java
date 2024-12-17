@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -16,6 +17,9 @@ import java.util.NoSuchElementException;
 import static common.Utils.*;
 
 public class BasePage {
+
+    @FindBy(className = "title")
+    WebElement stdPageTitle;
 
     protected WebDriver driver;
     private final int STD_TIMEOUT_SEC = Integer.parseInt(ContextStore.get("std-timeout-sec"));
@@ -78,5 +82,9 @@ public class BasePage {
 
     public String getCurrentUrl(){
         return driver.getCurrentUrl();
+    }
+
+    public String getPageTitle(){
+        return getText(stdPageTitle);
     }
 }

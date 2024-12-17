@@ -11,8 +11,6 @@ import static common.Utils.*;
 
 public class CheckoutConfirmationPage extends BasePage {
 
-    @FindBy(className = "title")
-    WebElement pageTitle;
     @FindBy(id = "finish")
     WebElement finishButton;
     @FindBy(className = "inventory_item_name")
@@ -36,10 +34,6 @@ public class CheckoutConfirmationPage extends BasePage {
 
     public CheckoutConfirmationPage(WebDriver driver) {
         super(driver);
-    }
-
-    public String getPageTitle() {
-        return getText(pageTitle);
     }
 
     public boolean isEachSelectedProductPresentInCheckout() {

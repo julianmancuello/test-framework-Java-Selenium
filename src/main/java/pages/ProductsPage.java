@@ -14,8 +14,6 @@ public class ProductsPage extends BasePage {
 
     @FindBy(id = "shopping_cart_container")
     WebElement cartButton;
-    @FindBy(className = "title")
-    WebElement pageTitle;
     @FindBy(id = "react-burger-menu-btn")
     WebElement menuButton;
     @FindBy(className = "bm-menu")
@@ -33,10 +31,6 @@ public class ProductsPage extends BasePage {
 
     public ProductsPage(WebDriver driver){
         super(driver);
-    }
-
-    public String getPageTitle(){
-        return getText(pageTitle);
     }
 
     public void clickMenu(){

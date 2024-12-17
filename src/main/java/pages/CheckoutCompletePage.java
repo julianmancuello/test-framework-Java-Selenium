@@ -6,8 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class CheckoutCompletePage extends BasePage {
 
-    @FindBy(className = "title")
-    WebElement pageTitle;
     @FindBy(className = "pony_express")
     WebElement greenTick;
     @FindBy(className = "complete-header")
@@ -19,10 +17,6 @@ public class CheckoutCompletePage extends BasePage {
 
     public CheckoutCompletePage(WebDriver driver){
         super(driver);
-    }
-
-    public String getPageTitle(){
-        return getText(pageTitle);
     }
 
     public boolean isGreenTickDisplayed(){

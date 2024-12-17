@@ -6,8 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class CheckoutInformationPage extends BasePage {
 
-    @FindBy(className = "title")
-    WebElement pageTitle;
     @FindBy(id = "first-name")
     WebElement firstNameField;
     @FindBy(id = "last-name")
@@ -19,10 +17,6 @@ public class CheckoutInformationPage extends BasePage {
 
     public CheckoutInformationPage(WebDriver driver){
         super(driver);
-    }
-
-    public String getPageTitle(){
-        return getText(pageTitle);
     }
 
     public void setFirstName(String firstName){

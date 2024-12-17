@@ -11,8 +11,6 @@ import static common.Utils.*;
 
 public class CartPage extends BasePage {
 
-    @FindBy(className = "title")
-    WebElement pageTitle;
     @FindBy(className = "inventory_item_name")
     List<WebElement> productName;
     @FindBy(className = "inventory_item_price")
@@ -24,10 +22,6 @@ public class CartPage extends BasePage {
 
     public CartPage(WebDriver driver){
         super(driver);
-    }
-
-    public String getPageTitle(){
-        return getText(pageTitle);
     }
 
     public boolean isEachSelectedProductPresentInCart(){

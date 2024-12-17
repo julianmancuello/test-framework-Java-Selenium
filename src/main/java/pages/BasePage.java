@@ -1,5 +1,6 @@
 package pages;
 
+import context.ContextStore;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
@@ -17,8 +18,8 @@ import static common.Utils.*;
 public class BasePage {
 
     protected WebDriver driver;
-    private final int STD_TIMEOUT_SEC = 10;
-    private final int POLLING_EVERY_MS = 100;
+    private final int STD_TIMEOUT_SEC = Integer.parseInt(ContextStore.get("std-timeout-sec"));
+    private final int POLLING_EVERY_MS = Integer.parseInt(ContextStore.get("polling-every-ms"));
 
     public BasePage(WebDriver driver){
         this.driver = driver;

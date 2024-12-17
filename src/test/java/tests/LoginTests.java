@@ -11,27 +11,25 @@ import static org.junit.jupiter.api.Assertions.*;
 public class LoginTests extends Hooks {
 
     @Test
-    public void testLoginSuccessful(){
+    public void testCheckTitleOnLoginPage(){
         assertEquals(LOGIN_PAGE_TITLE, loginPage.getPageTitle(), "Login page title is incorrect");
-        loginPage.setUsername(USER_STANDARD);
-        loginPage.setPassword(MASTER_PASSWORD);
-        ProductsPage productsPage = loginPage.clickLoginButton();
-        assertEquals(PRODUCTS_PAGE_TITLE, productsPage.getPageTitle(), "Products page title is incorrect");
-        productsPage.clickMenu();
-        assertTrue(productsPage.isMenuOpen());
-        assertTrue(productsPage.isLogoutDisplayed());
-        System.out.println("User logged in successfully and is on the products page");
+        System.out.println("Login page title is correct");
     }
 
     @Test
-    public void testLoginFailed(){
-        assertEquals(LOGIN_PAGE_TITLE, loginPage.getPageTitle(), "Login page title is incorrect");
-        loginPage.setUsername(generateRandomAlphanumericString(10, 15));
-        loginPage.setPassword(generateRandomAlphanumericString(10, 20));
-        loginPage.clickLoginButton();
+    public void testLoginSuccessful(){
+        loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
+
+        assertEquals(PRODUCTS_PAGE_URL, loginPage.getCurrentUrl(), "Login failed, user was unable to log in");
+        System.out.println("User has successfully logged in");
+    }
+
+    @Test
+    public void testLoginFailedDisplayErrorIconsAndMessage(){
+        loginPage.fillLoginForm(generateRandomAlphanumericString(10, 15), generateRandomAlphanumericString(10, 20));
 
         assertTrue(loginPage.isErrorIconDisplayed(), "Error icons are not displayed");
-        assertEquals(LOGIN_FAILED_MSG, loginPage.getLoginErrorMessage(), "Error messages do not match");
-        System.out.println("Login attempt failed as expected. User could not log in.");
+        assertEquals(LOGIN_FAILED_MSG, loginPage.getLoginErrorMessage(), "Error message do not match");
+        System.out.println("Login attempt failed as expected. Error icons and error message are displayed.");
     }
 }

@@ -57,9 +57,9 @@ public class LoginPage extends BasePage {
         return getText(loginErrorMessage);
     }
 
-    public ProductsPage fillLoginForm(String userStandard, String masterPassword){
-        setUsername(userStandard);
-        setPassword(masterPassword);
+    public ProductsPage fillLoginForm(String username, String password){
+        setUsername(username);
+        setPassword(password);
         return clickLoginButton();
     }
 }

@@ -30,6 +30,7 @@ public class TestData {
     public static final String LOGIN_FAILED_MSG = ContextStore.get("login-failed-msg");
 
     //Products page
+    public static final String PRODUCTS_PAGE_URL = ContextStore.get("products-page-url");
     public static final String PRODUCTS_PAGE_TITLE = ContextStore.get("products-page-title");
 
     //Cart page

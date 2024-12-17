@@ -74,4 +74,8 @@ public class BasePage {
             throw new NoSuchElementException("Could not find element: " + webElement, e);
         }
     }
+
+    public String getCurrentUrl(){
+        return driver.getCurrentUrl();
+    }
 }

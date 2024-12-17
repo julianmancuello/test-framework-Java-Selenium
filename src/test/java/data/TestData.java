@@ -26,28 +26,28 @@ public class TestData {
 
     //--Information on the pages
     //Login page
-    public static final String LOGIN_PAGE_TITLE = ContextStore.get("login-page-title");
-    public static final String LOGIN_FAILED_MSG = ContextStore.get("login-failed-msg");
+    public static final String LOGIN_PAGE_TITLE = "Swag Labs";
+    public static final String LOGIN_FAILED_MSG = "Epic sadface: Username and password do not match any user in this service";
 
     //Products page
-    public static final String PRODUCTS_PAGE_URL = ContextStore.get("products-page-url");
-    public static final String PRODUCTS_PAGE_TITLE = ContextStore.get("products-page-title");
+    public static final String PRODUCTS_PAGE_URL = "https://www.saucedemo.com/inventory.html";
+    public static final String PRODUCTS_PAGE_TITLE = "Products";
 
     //Cart page
-    public static final String CART_PAGE_TITLE = ContextStore.get("cart-page-title");
+    public static final String CART_PAGE_TITLE = "Your Cart";
 
     //Checkout Information page
-    public static final String CHECKOUT_INFO_PAGE_TITLE = ContextStore.get("checkout-info-page-title");
+    public static final String CHECKOUT_INFO_PAGE_TITLE = "Checkout: Your Information";
 
     //Checkout Confirmation page
-    public static final String CHECKOUT_CONF_PAGE_TITLE = ContextStore.get("checkout-conf-page-title");
-    public static final String PAYMENT_INFO_TITLE = ContextStore.get("payment-information-title");
-    public static final String SHIPPING_INFO_TITLE = ContextStore.get("shipping-information-title");
-    public static final String PRICE_TOTAL_TITLE = ContextStore.get("price-total-title");
+    public static final String CHECKOUT_CONF_PAGE_TITLE = "Checkout: Overview";
+    public static final String PAYMENT_INFO_TITLE = "Payment Information:";
+    public static final String SHIPPING_INFO_TITLE = "Shipping Information:";
+    public static final String PRICE_TOTAL_TITLE = "Price Total";
 
     //Checkout Complete page
-    public static final String CHECKOUT_COMPL_PAGE_TITLE = ContextStore.get("checkout-compl-page-title");
-    public static final String SUCCESSFUL_HEADER = ContextStore.get("successful-header");
-    public static final String SUCCESSFUL_MSG = ContextStore.get("successful-msg");
-    public static final String BACK_HOME_BTN_TEXT = ContextStore.get("back-home-btn-text");
+    public static final String CHECKOUT_COMPL_PAGE_TITLE = "Checkout: Complete!";
+    public static final String SUCCESSFUL_HEADER = "Thank you for your order!";
+    public static final String SUCCESSFUL_MSG = "Your order has been dispatched, and will arrive just as fast as the pony can get there!";
+    public static final String BACK_HOME_BTN_TEXT = "Back Home";
 }

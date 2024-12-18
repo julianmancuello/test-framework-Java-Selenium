@@ -21,20 +21,23 @@ public class CartTests extends Hooks {
     }
 
     @Test
-    public void addProductToCart(){
+    public void testProductsAndTheirPricesAddedToCartCorrectly(){
         ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
-
         productsPage.addToCartNRandomProducts();
-
-
         CartPage cartPage = productsPage.clickCart();
 
-        System.out.println("User enters the cart page");
-        assertTrue(cartPage.isEachSelectedProductPresentInCart());
-        assertTrue(cartPage.isPriceOfEachSelectedProductInCartCorrect());
-        System.out.println("Everything was successfully added to the cart");
+        assertTrue(cartPage.isEachSelectedProductPresentInCart(), "The selected products are not present on the cart page.");
+        assertTrue(cartPage.isPriceOfEachSelectedProductInCartCorrect(), "The prices displayed on the cart page are incorrect.");
+        System.out.println("Products were added to the cart successfully");
+    }
+
+    @Test
+    public void testContinueShoppingFromCart(){
+        ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
+        CartPage cartPage = productsPage.clickCart();
         cartPage.clickContinueShoppingButton();
-        assertEquals(PRODUCTS_PAGE_TITLE, productsPage.getPageTitle(), "Products page title is incorrect");
-        System.out.println("The user is back on the products page");
+
+        assertEquals(PRODUCTS_PAGE_URL, loginPage.getCurrentUrl(), "It was not possible to return to the 'Products' page.");
+        System.out.println("The user returned to the 'Products' page and can continue shopping.");
     }
 }

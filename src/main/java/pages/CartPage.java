@@ -26,22 +26,12 @@ public class CartPage extends BasePage {
 
     public boolean isEachSelectedProductPresentInCart(){
         List<String> selectedProductNames = ContextStore.get("selectedProductNames");
-        if(isEachStringInListPresentInPage(productName, selectedProductNames)){
-            System.out.println("Each selected product is present on the cart page.");
-            return true;
-        }
-        System.out.println("The selected products are not present on the cart page.");
-        return false;
+        return isEachStringInListPresentInPage(productName, selectedProductNames);
     }
 
     public boolean isPriceOfEachSelectedProductInCartCorrect(){
         List<Double> selectedProductPrices = ContextStore.get("selectedProductPrices");
-        if(isEachDoubleInListPresentInPage(productPrice, selectedProductPrices)){
-            System.out.println("The price of each selected product is correct on the cart page.");
-            return true;
-        }
-        System.out.println("The prices displayed on the cart page are incorrect.");
-        return false;
+        return isEachDoubleInListPresentInPage(productPrice, selectedProductPrices);
     }
 
     public CheckoutInformationPage clickCheckoutButton(){

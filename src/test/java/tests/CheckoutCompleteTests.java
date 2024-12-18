@@ -1,6 +1,7 @@
 package tests;
 
 import hooks.Hooks;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.*;
 
@@ -10,14 +11,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CheckoutCompleteTests extends Hooks {
 
-    @Test
-    public void testCheckTitleOnCheckoutCompletePage(){
+    private CheckoutCompletePage checkoutCompletePage;
+
+    @BeforeEach
+    public void commonStepsForCheckoutCompleteTests(){
         ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
         productsPage.addToCartNRandomProducts();
         CartPage cartPage = productsPage.clickCart();
         CheckoutInformationPage checkoutInformationPage = cartPage.clickCheckoutButton();
         CheckoutConfirmationPage checkoutConfirmationPage = checkoutInformationPage.fillPersonalInformationForm(FIRST_NAME, LAST_NAME, POSTAL_CODE);
-        CheckoutCompletePage checkoutCompletePage = checkoutConfirmationPage.clickFinishButton();
+        checkoutCompletePage = checkoutConfirmationPage.clickFinishButton();
+    }
+
+    @Test
+    public void testCheckTitleOnCheckoutCompletePage(){
 
         assertEquals(CHECKOUT_COMPL_PAGE_TITLE, checkoutCompletePage.getPageTitle(), "Checkout Complete page title is incorrect");
         System.out.println("Checkout Complete page title is correct.");
@@ -25,12 +32,6 @@ public class CheckoutCompleteTests extends Hooks {
 
     @Test
     public void testGreenTickIsDisplayedAfterCheckout(){
-        ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
-        productsPage.addToCartNRandomProducts();
-        CartPage cartPage = productsPage.clickCart();
-        CheckoutInformationPage checkoutInformationPage = cartPage.clickCheckoutButton();
-        CheckoutConfirmationPage checkoutConfirmationPage = checkoutInformationPage.fillPersonalInformationForm(FIRST_NAME, LAST_NAME, POSTAL_CODE);
-        CheckoutCompletePage checkoutCompletePage = checkoutConfirmationPage.clickFinishButton();
 
         assertTrue(checkoutCompletePage.isGreenTickDisplayed(), "The green tick is not displayed after the checkout");
         System.out.println("The green tick is displayed after the checkout");
@@ -38,12 +39,6 @@ public class CheckoutCompleteTests extends Hooks {
 
     @Test
     public void testTextsDisplayedAfterCheckoutAreAsExpected(){
-        ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
-        productsPage.addToCartNRandomProducts();
-        CartPage cartPage = productsPage.clickCart();
-        CheckoutInformationPage checkoutInformationPage = cartPage.clickCheckoutButton();
-        CheckoutConfirmationPage checkoutConfirmationPage = checkoutInformationPage.fillPersonalInformationForm(FIRST_NAME, LAST_NAME, POSTAL_CODE);
-        CheckoutCompletePage checkoutCompletePage = checkoutConfirmationPage.clickFinishButton();
 
         assertEquals(SUCCESSFUL_HEADER, checkoutCompletePage.getSuccessfulHeader(), "Success header is incorrect");
         assertEquals(SUCCESSFUL_MSG, checkoutCompletePage.getSuccessfulMessage(), "The success message is incorrect");
@@ -52,12 +47,6 @@ public class CheckoutCompleteTests extends Hooks {
 
     @Test
     public void testCompleteCheckoutSuccessfully(){
-        ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
-        productsPage.addToCartNRandomProducts();
-        CartPage cartPage = productsPage.clickCart();
-        CheckoutInformationPage checkoutInformationPage = cartPage.clickCheckoutButton();
-        CheckoutConfirmationPage checkoutConfirmationPage = checkoutInformationPage.fillPersonalInformationForm(FIRST_NAME, LAST_NAME, POSTAL_CODE);
-        CheckoutCompletePage checkoutCompletePage = checkoutConfirmationPage.clickFinishButton();
 
         assertEquals(CHECKOUT_COMPL_PAGE_URL, checkoutCompletePage.getCurrentUrl(), "Error: Purchase not completed");
         System.out.println("Purchase completed successfully");
@@ -65,12 +54,6 @@ public class CheckoutCompleteTests extends Hooks {
 
     @Test
     public void testBackHomeFromCheckoutCompletePage(){
-        ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
-        productsPage.addToCartNRandomProducts();
-        CartPage cartPage = productsPage.clickCart();
-        CheckoutInformationPage checkoutInformationPage = cartPage.clickCheckoutButton();
-        CheckoutConfirmationPage checkoutConfirmationPage = checkoutInformationPage.fillPersonalInformationForm(FIRST_NAME, LAST_NAME, POSTAL_CODE);
-        CheckoutCompletePage checkoutCompletePage = checkoutConfirmationPage.clickFinishButton();
         checkoutCompletePage.clickBackHomeButton();
 
         assertEquals(PRODUCTS_PAGE_URL, loginPage.getCurrentUrl(), "The user was unable to return to the Products Page.");

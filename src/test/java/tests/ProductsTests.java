@@ -1,6 +1,7 @@
 package tests;
 
 import hooks.Hooks;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.ProductsPage;
 
@@ -10,9 +11,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ProductsTests extends Hooks {
 
+    private ProductsPage productsPage;
+
+    @BeforeEach
+    public void commonStepsForProductsTests(){
+        productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
+    }
+
     @Test
     public void testCheckTitleOnProductsPage(){
-        ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
 
         assertEquals(PRODUCTS_PAGE_TITLE, productsPage.getPageTitle(), "Products page title is incorrect");
         System.out.println("Products page title is correct");
@@ -20,7 +27,6 @@ public class ProductsTests extends Hooks {
 
     @Test
     public void testAddToCartButtonChangesToRemoveAfterAddingProductToCart(){
-        ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
         productsPage.addToCartNRandomProducts();
 
         assertTrue(productsPage.isAddToCartButtonChangedToRemove(), "The buttons did not change to 'Remove'.");
@@ -29,7 +35,6 @@ public class ProductsTests extends Hooks {
 
     @Test
     public void testCartBadgeCountDisplaysTheCorrectQuantityOfSelectedProducts(){
-        ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
         productsPage.addToCartNRandomProducts();
 
         assertTrue(productsPage.isCartBadgeCountEqualToQuantityOfSelectedProducts(), "The count displayed on the cart badge does not match the quantity of selected products");

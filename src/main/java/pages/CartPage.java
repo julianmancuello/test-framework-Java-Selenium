@@ -34,6 +34,10 @@ public class CartPage extends BasePage {
         return isEachDoubleInListPresentInPage(productPrice, selectedProductPrices);
     }
 
+    public boolean isProductInformationInCartCorrect(){
+        return isEachSelectedProductPresentInCart() && isPriceOfEachSelectedProductInCartCorrect();
+    }
+
     public CheckoutInformationPage clickCheckoutButton(){
         click(checkoutButton);
         return new CheckoutInformationPage(driver);

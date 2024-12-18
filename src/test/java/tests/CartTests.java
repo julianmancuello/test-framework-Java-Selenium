@@ -1,6 +1,7 @@
 package tests;
 
 import hooks.Hooks;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.CartPage;
 import pages.ProductsPage;
@@ -11,9 +12,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CartTests extends Hooks {
 
+    private ProductsPage productsPage;
+
+    @BeforeEach
+    public void commonStepsForProductsTests(){
+        productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
+    }
+
     @Test
     public void testCheckTitleOnCartPage(){
-        ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
         CartPage cartPage = productsPage.clickCart();
 
         assertEquals(CART_PAGE_TITLE, cartPage.getPageTitle(), "Cart page title is incorrect.");
@@ -21,19 +28,16 @@ public class CartTests extends Hooks {
     }
 
     @Test
-    public void testProductsAndTheirPricesAddedToCartCorrectly(){
-        ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
+    public void testProductsInformationDisplayedInCartMatchesWithSelectedProducts(){
         productsPage.addToCartNRandomProducts();
         CartPage cartPage = productsPage.clickCart();
 
-        assertTrue(cartPage.isEachSelectedProductPresentInCart(), "The selected products are not present on the cart page.");
-        assertTrue(cartPage.isPriceOfEachSelectedProductInCartCorrect(), "The prices displayed on the cart page are incorrect.");
-        System.out.println("Products were added to the cart successfully.");
+        assertTrue(cartPage.isProductInformationInCartCorrect(), "The products information in the cart do not match the selected products.");
+        System.out.println("The products information in the cart matches the selected products.");
     }
 
     @Test
     public void testContinueShoppingFromCart(){
-        ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
         CartPage cartPage = productsPage.clickCart();
         cartPage.clickContinueShoppingButton();
 

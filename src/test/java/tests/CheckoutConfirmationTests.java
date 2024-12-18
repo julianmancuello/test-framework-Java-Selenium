@@ -1,6 +1,7 @@
 package tests;
 
 import hooks.Hooks;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.CartPage;
 import pages.CheckoutConfirmationPage;
@@ -13,13 +14,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CheckoutConfirmationTests extends Hooks {
 
-    @Test
-    public void testCheckTitleOnCheckoutConfirmationPage(){
+    private CheckoutConfirmationPage checkoutConfirmationPage;
+
+    @BeforeEach
+    public void commonStepsForCheckoutConfirmationTests(){
         ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
         productsPage.addToCartNRandomProducts();
         CartPage cartPage = productsPage.clickCart();
         CheckoutInformationPage checkoutInformationPage = cartPage.clickCheckoutButton();
-        CheckoutConfirmationPage checkoutConfirmationPage = checkoutInformationPage.fillPersonalInformationForm(FIRST_NAME, LAST_NAME, POSTAL_CODE);
+        checkoutConfirmationPage = checkoutInformationPage.fillPersonalInformationForm(FIRST_NAME, LAST_NAME, POSTAL_CODE);
+    }
+
+    @Test
+    public void testCheckTitleOnCheckoutConfirmationPage(){
 
         assertEquals(CHECKOUT_CONF_PAGE_TITLE, checkoutConfirmationPage.getPageTitle(), "Checkout Confirmation page title is incorrect");
         System.out.println("Checkout Confirmation page title is correct.");
@@ -27,11 +34,6 @@ public class CheckoutConfirmationTests extends Hooks {
 
     @Test
     public void testCheckSubtitleOfConceptsOnCheckoutConfirmationPage(){
-        ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
-        productsPage.addToCartNRandomProducts();
-        CartPage cartPage = productsPage.clickCart();
-        CheckoutInformationPage checkoutInformationPage = cartPage.clickCheckoutButton();
-        CheckoutConfirmationPage checkoutConfirmationPage = checkoutInformationPage.fillPersonalInformationForm(FIRST_NAME, LAST_NAME, POSTAL_CODE);
 
         assertEquals(PAYMENT_INFO_TITLE, checkoutConfirmationPage.getPaymentInformationTitle(), "The subtitle 'Payment Information' is incorrect");
         assertEquals(SHIPPING_INFO_TITLE, checkoutConfirmationPage.getShippingInformationTitle(), "The subtitle 'Shipping Information' is incorrect");
@@ -40,25 +42,14 @@ public class CheckoutConfirmationTests extends Hooks {
     }
 
     @Test
-    public void testProductsAndTheirPricesAreCorrectInCheckout(){
-        ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
-        productsPage.addToCartNRandomProducts();
-        CartPage cartPage = productsPage.clickCart();
-        CheckoutInformationPage checkoutInformationPage = cartPage.clickCheckoutButton();
-        CheckoutConfirmationPage checkoutConfirmationPage = checkoutInformationPage.fillPersonalInformationForm(FIRST_NAME, LAST_NAME, POSTAL_CODE);
+    public void testProductsInformationDisplayedInCheckoutMatchesWithSelectedProducts(){
 
-        assertTrue(checkoutConfirmationPage.isEachSelectedProductPresentInCheckout(), "The selected products are not present on the checkout confirmation page.");
-        assertTrue(checkoutConfirmationPage.isPriceOfEachSelectedProductInCheckoutCorrect(), "The prices displayed on the checkout confirmation page are incorrect.");
-        System.out.println("The products and prices displayed on the checkout confirmation page are correct.");
+        assertTrue(checkoutConfirmationPage.isProductInformationInCheckoutCorrect(), "The products information in the checkout do not match the selected products.");
+        System.out.println("The products information in the checkout matches the selected products.");
     }
 
     @Test
     public void testCheckValueOfSubtotalTaxAndTotal(){
-        ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
-        productsPage.addToCartNRandomProducts();
-        CartPage cartPage = productsPage.clickCart();
-        CheckoutInformationPage checkoutInformationPage = cartPage.clickCheckoutButton();
-        CheckoutConfirmationPage checkoutConfirmationPage = checkoutInformationPage.fillPersonalInformationForm(FIRST_NAME, LAST_NAME, POSTAL_CODE);
 
         assertTrue(checkoutConfirmationPage.isTheValueOfSubtotalTaxAndTotalCorrect(), "The subtotal, tax and total values displayed on the page do not match the calculated values");
         System.out.println("The subtotal, tax and total values displayed on the page matches the calculated values");

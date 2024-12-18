@@ -46,6 +46,10 @@ public class CheckoutConfirmationPage extends BasePage {
         return isEachDoubleInListPresentInPage(productPrice, selectedProductPrices);
     }
 
+    public boolean isProductInformationInCheckoutCorrect(){
+        return isEachSelectedProductPresentInCheckout() && isPriceOfEachSelectedProductInCheckoutCorrect();
+    }
+
     public String getPaymentInformationTitle() {
         return getText(paymentInformationTitle);
     }

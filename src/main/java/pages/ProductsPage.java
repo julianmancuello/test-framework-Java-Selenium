@@ -14,12 +14,6 @@ public class ProductsPage extends BasePage {
 
     @FindBy(id = "shopping_cart_container")
     WebElement cartButton;
-    @FindBy(id = "react-burger-menu-btn")
-    WebElement menuButton;
-    @FindBy(className = "bm-menu")
-    WebElement menuPanel;
-    @FindBy(id = "logout_sidebar_link")
-    WebElement logoutButton;
     @FindBy(className = "btn_small")
     List<WebElement> addToCartButton;
     @FindBy(className = "inventory_item_name")
@@ -31,26 +25,6 @@ public class ProductsPage extends BasePage {
 
     public ProductsPage(WebDriver driver){
         super(driver);
-    }
-
-    public void clickMenu(){
-        click(menuButton);
-    }
-
-    public boolean isMenuOpen(){
-        if(isDisplayed(menuPanel)){
-            return true;
-        }
-        System.out.println("The menu is not open");
-        return false;
-    }
-
-    public boolean isLogoutDisplayed(){
-        if(isDisplayed(logoutButton)){
-            return true;
-        }
-        System.out.println("The logout button is not displayed");
-        return false;
     }
 
     public void addToCartNRandomProducts(){
@@ -68,10 +42,6 @@ public class ProductsPage extends BasePage {
         ContextStore.put("listOfIndexes", listOfIndexes);
         ContextStore.put("selectedProductNames", selectedProductNames);
         ContextStore.put("selectedProductPrices", selectedProductPrices);
-        System.out.println("Quantity of selected products: " + quantityOfProducts);
-        System.out.println("List of selected products: " + selectedProductNames);
-        System.out.println("Prices of selected products: " + selectedProductPrices);
-        System.out.println("Cost of selected products: " + sumListOfNumbers(selectedProductPrices));
     }
 
     public boolean isAddToCartButtonChangedToRemove(){

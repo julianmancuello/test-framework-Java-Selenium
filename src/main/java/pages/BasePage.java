@@ -53,31 +53,18 @@ public class BasePage {
     }
 
     public void type(WebElement webElement, String text){
-        try{
-            waitForElementToBeVisible(webElement);
-            webElement.sendKeys(text);
-            System.out.println("Typed '" + text + "' in the element: " + extractLocatorFromWebElement(webElement));
-        }catch(ElementNotInteractableException e){
-            throw new ElementNotInteractableException("Cannot interact with element: " + webElement, e);
-        }
+        waitForElementToBeVisible(webElement);
+        webElement.sendKeys(text);
     }
 
     public String getText(WebElement webElement){
-        try{
-            waitForElementToBeVisible(webElement);
-            return webElement.getText();
-        }catch(NoSuchElementException e){
-            throw new NoSuchElementException("Failed to get text for element: " + webElement, e);
-        }
+        waitForElementToBeVisible(webElement);
+        return webElement.getText();
     }
 
     public boolean isDisplayed(WebElement webElement){
-        try{
-            waitForElementToBeVisible(webElement);
-            return webElement.isDisplayed();
-        }catch(NoSuchElementException e){
-            throw new NoSuchElementException("Could not find element: " + webElement, e);
-        }
+        waitForElementToBeVisible(webElement);
+        return webElement.isDisplayed();
     }
 
     public String getCurrentUrl(){

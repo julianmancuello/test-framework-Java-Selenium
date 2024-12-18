@@ -46,6 +46,7 @@ public class TestData {
     public static final String PRICE_TOTAL_TITLE = "Price Total";
 
     //Checkout Complete page
+    public static final String CHECKOUT_COMPL_PAGE_URL = "https://www.saucedemo.com/checkout-complete.html";
     public static final String CHECKOUT_COMPL_PAGE_TITLE = "Checkout: Complete!";
     public static final String SUCCESSFUL_HEADER = "Thank you for your order!";
     public static final String SUCCESSFUL_MSG = "Your order has been dispatched, and will arrive just as fast as the pony can get there!";

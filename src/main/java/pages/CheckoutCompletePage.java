@@ -20,11 +20,7 @@ public class CheckoutCompletePage extends BasePage {
     }
 
     public boolean isGreenTickDisplayed(){
-        if(isDisplayed(greenTick)){
-            return true;
-        }
-        System.out.println("The green tick is not displayed");
-        return false;
+        return isDisplayed(greenTick);
     }
 
     public String getSuccessfulHeader(){

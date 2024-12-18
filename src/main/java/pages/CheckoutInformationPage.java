@@ -35,4 +35,11 @@ public class CheckoutInformationPage extends BasePage {
         click(continueButton);
         return new CheckoutConfirmationPage(driver);
     }
+
+    public CheckoutConfirmationPage fillPersonalInformationForm(String firstName, String lastName, String postalCode){
+        setFirstName(firstName);
+        setLastName(lastName);
+        setPostalCode(postalCode);
+        return clickContinueButton();
+    }
 }

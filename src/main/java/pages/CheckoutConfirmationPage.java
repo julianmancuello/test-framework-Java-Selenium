@@ -38,22 +38,12 @@ public class CheckoutConfirmationPage extends BasePage {
 
     public boolean isEachSelectedProductPresentInCheckout() {
         List<String> selectedProductNames = ContextStore.get("selectedProductNames");
-        if (isEachStringInListPresentInPage(productName, selectedProductNames)) {
-            System.out.println("Each selected product is present on the checkout confirmation page.");
-            return true;
-        }
-        System.out.println("The selected products are not present on the checkout confirmation page.");
-        return false;
+        return isEachStringInListPresentInPage(productName, selectedProductNames);
     }
 
     public boolean isPriceOfEachSelectedProductInCheckoutCorrect() {
         List<Double> selectedProductPrices = ContextStore.get("selectedProductPrices");
-        if (isEachDoubleInListPresentInPage(productPrice, selectedProductPrices)) {
-            System.out.println("The price of each selected product is correct on the checkout confirmation page.");
-            return true;
-        }
-        System.out.println("The prices displayed on the checkout confirmation page are incorrect.");
-        return false;
+        return isEachDoubleInListPresentInPage(productPrice, selectedProductPrices);
     }
 
     public String getPaymentInformationTitle() {
@@ -84,6 +74,10 @@ public class CheckoutConfirmationPage extends BasePage {
         double totalInPage = parsePrice(getText(totalPrice));
         double totalCalculated = calculateTotalWithTaxes(sumListOfNumbers(ContextStore.get("selectedProductPrices")), TAX_RATE);
         return isNumberEqualToNumber(totalCalculated, totalInPage);
+    }
+
+    public boolean isTheValueOfSubtotalTaxAndTotalCorrect(){
+        return isSubtotalCorrect() && isTaxAmountCorrect() && isTotalCorrect();
     }
 
     public CheckoutCompletePage clickFinishButton() {

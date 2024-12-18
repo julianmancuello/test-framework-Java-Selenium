@@ -1,13 +1,13 @@
 package tests;
 
-import hooks.Hooks;
+import common.CommonSteps;
 import org.junit.jupiter.api.Test;
 
 import static common.Utils.*;
 import static data.TestData.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class LoginTests extends Hooks {
+public class LoginTests extends CommonSteps {
 
     @Test
     public void testCheckTitleOnLoginPage(){

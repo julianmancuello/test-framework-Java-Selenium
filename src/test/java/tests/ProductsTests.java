@@ -1,26 +1,22 @@
 package tests;
 
-import hooks.Hooks;
+import common.CommonSteps;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import pages.ProductsPage;
 
 import static data.TestData.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ProductsTests extends Hooks {
-
-    private ProductsPage productsPage;
+public class ProductsTests extends CommonSteps {
 
     @BeforeEach
     public void commonStepsForProductsTests(){
-        productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
+        productsPage = loginAndNavigateToProducts();
     }
 
     @Test
     public void testCheckTitleOnProductsPage(){
-
         assertEquals(PRODUCTS_PAGE_TITLE, productsPage.getPageTitle(), "Products page title is incorrect");
         System.out.println("Products page title is correct");
     }

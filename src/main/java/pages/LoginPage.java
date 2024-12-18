@@ -48,7 +48,7 @@ public class LoginPage extends BasePage {
     }
 
     public boolean isErrorIconCountEqualToExpectedQuantity() {
-        return isListSizeEqualToExpectedNumber(errorIcon, EXPECTED_ERROR_ICONS);
+        return isNumberEqualToNumber(errorIcon.size(), EXPECTED_ERROR_ICONS);
     }
 
     public String getLoginErrorMessage() {

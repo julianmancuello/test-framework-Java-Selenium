@@ -79,7 +79,6 @@ public class ProductsPage extends BasePage {
 
         for(Integer index : listOfIndexes){
             if(!getText(addToCartButton.get(index)).equals("Remove")){
-                System.out.println("The buttons did not change.");
                 return false;
             }
         }
@@ -89,11 +88,7 @@ public class ProductsPage extends BasePage {
     public boolean isCartBadgeCountEqualToQuantityOfSelectedProducts(){
         List<Integer> listOfIndexes = ContextStore.get("listOfIndexes");
         int quantityOfProducts = Integer.parseInt(getText(cartBadge));
-        if(isNumberEqualToNumber(listOfIndexes.size(), quantityOfProducts)){
-            return true;
-        }
-        System.out.println("The count displayed on the cart badge " + quantityOfProducts + " does not match the calculated quantity of products " + listOfIndexes.size());
-        return false;
+        return isNumberEqualToNumber(listOfIndexes.size(), quantityOfProducts);
     }
 
     public CartPage clickCart(){

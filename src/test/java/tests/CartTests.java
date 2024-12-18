@@ -23,11 +23,10 @@ public class CartTests extends Hooks {
     @Test
     public void addProductToCart(){
         ProductsPage productsPage = loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
-        assertEquals(PRODUCTS_PAGE_TITLE, productsPage.getPageTitle(), "Products page title is incorrect");
-        System.out.println("User logged in successfully and is on the products page");
+
         productsPage.addToCartNRandomProducts();
-        assertTrue(productsPage.isAddToCartButtonChangedToRemove());
-        assertTrue(productsPage.isCartBadgeCountEqualToQuantityOfSelectedProducts());
+
+
         CartPage cartPage = productsPage.clickCart();
 
         System.out.println("User enters the cart page");

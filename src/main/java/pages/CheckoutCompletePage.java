@@ -15,23 +15,23 @@ public class CheckoutCompletePage extends BasePage {
     @FindBy(id = "back-to-products")
     WebElement backHomeButton;
 
-    public CheckoutCompletePage(WebDriver driver){
+    public CheckoutCompletePage(WebDriver driver) {
         super(driver);
     }
 
-    public boolean isGreenTickDisplayed(){
+    public boolean isGreenTickDisplayed() {
         return isDisplayed(greenTick);
     }
 
-    public String getSuccessfulHeader(){
+    public String getSuccessfulHeader() {
         return getText(successfulHeader);
     }
 
-    public String getSuccessfulMessage(){
+    public String getSuccessfulMessage() {
         return getText(successfulMessage);
     }
 
-    public void clickBackHomeButton(){
+    public void clickBackHomeButton() {
         click(backHomeButton);
     }
 }

@@ -15,28 +15,28 @@ public class CheckoutInformationPage extends BasePage {
     @FindBy(id = "continue")
     WebElement continueButton;
 
-    public CheckoutInformationPage(WebDriver driver){
+    public CheckoutInformationPage(WebDriver driver) {
         super(driver);
     }
 
-    public void setFirstName(String firstName){
+    public void setFirstName(String firstName) {
         type(firstNameField, firstName);
     }
 
-    public void setLastName(String lastName){
+    public void setLastName(String lastName) {
         type(lastNameField, lastName);
     }
 
-    public void setPostalCode(String postalCode){
+    public void setPostalCode(String postalCode) {
         type(postalCodeField, postalCode);
     }
 
-    public CheckoutConfirmationPage clickContinueButton(){
+    public CheckoutConfirmationPage clickContinueButton() {
         click(continueButton);
         return new CheckoutConfirmationPage(driver);
     }
 
-    public CheckoutConfirmationPage fillPersonalInformationForm(String firstName, String lastName, String postalCode){
+    public CheckoutConfirmationPage fillPersonalInformationForm(String firstName, String lastName, String postalCode) {
         setFirstName(firstName);
         setLastName(lastName);
         setPostalCode(postalCode);

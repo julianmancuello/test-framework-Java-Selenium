@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-import static common.Utils.*;
+import static common.Utils.isNumberEqualToNumber;
 
 public class LoginPage extends BasePage {
 

@@ -13,32 +13,32 @@ public class CommonSteps extends Hooks {
     protected CheckoutConfirmationPage checkoutConfirmationPage;
     protected CheckoutCompletePage checkoutCompletePage;
 
-    protected ProductsPage loginAndNavigateToProducts(){
+    protected ProductsPage loginAndNavigateToProducts() {
         return loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
     }
 
-    protected CartPage goToCartAddingProducts(){
+    protected CartPage goToCartAddingProducts() {
         productsPage = loginAndNavigateToProducts();
         productsPage.addToCartNRandomProducts();
         return productsPage.clickCart();
     }
 
-    protected CartPage goToCartWithoutAddingProducts(){
+    protected CartPage goToCartWithoutAddingProducts() {
         productsPage = loginAndNavigateToProducts();
         return productsPage.clickCart();
     }
 
-    protected CheckoutInformationPage afterAddingProductsToCartProceedToCheckoutInformation(){
+    protected CheckoutInformationPage afterAddingProductsToCartProceedToCheckoutInformation() {
         cartPage = goToCartAddingProducts();
         return cartPage.clickCheckoutButton();
     }
 
-    protected CheckoutConfirmationPage fillInformationFormAndProceedToCheckoutConfirmation(){
+    protected CheckoutConfirmationPage fillInformationFormAndProceedToCheckoutConfirmation() {
         checkoutInformationPage = afterAddingProductsToCartProceedToCheckoutInformation();
         return checkoutInformationPage.fillPersonalInformationForm(FIRST_NAME, LAST_NAME, POSTAL_CODE);
     }
 
-    protected CheckoutCompletePage proceedToCompleteTheCheckout(){
+    protected CheckoutCompletePage proceedToCompleteTheCheckout() {
         checkoutConfirmationPage = fillInformationFormAndProceedToCheckoutConfirmation();
         return checkoutConfirmationPage.clickFinishButton();
     }

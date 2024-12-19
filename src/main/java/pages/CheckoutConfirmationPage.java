@@ -46,7 +46,7 @@ public class CheckoutConfirmationPage extends BasePage {
         return isEachDoubleInListPresentInPage(productPrice, selectedProductPrices);
     }
 
-    public boolean isProductInformationInCheckoutCorrect(){
+    public boolean isProductInformationInCheckoutCorrect() {
         return isEachSelectedProductPresentInCheckout() && isPriceOfEachSelectedProductInCheckoutCorrect();
     }
 
@@ -80,7 +80,7 @@ public class CheckoutConfirmationPage extends BasePage {
         return isNumberEqualToNumber(totalCalculated, totalInPage);
     }
 
-    public boolean isTheValueOfSubtotalTaxAndTotalCorrect(){
+    public boolean isTheValueOfSubtotalTaxAndTotalCorrect() {
         return isSubtotalCorrect() && isTaxAmountCorrect() && isTotalCorrect();
     }
 

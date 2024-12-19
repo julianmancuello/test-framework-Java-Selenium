@@ -11,37 +11,37 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CheckoutCompleteTests extends CommonSteps {
 
     @BeforeEach
-    public void commonStepsForCheckoutCompleteTests(){
+    public void commonStepsForCheckoutCompleteTests() {
         checkoutCompletePage = proceedToCompleteTheCheckout();
     }
 
     @Test
-    public void testCheckTitleOnCheckoutCompletePage(){
+    public void testCheckTitleOnCheckoutCompletePage() {
         assertEquals(CHECKOUT_COMPL_PAGE_TITLE, checkoutCompletePage.getPageTitle(), "Checkout Complete page title is incorrect");
         System.out.println("Checkout Complete page title is correct.");
     }
 
     @Test
-    public void testGreenTickIsDisplayedAfterCheckout(){
+    public void testGreenTickIsDisplayedAfterCheckout() {
         assertTrue(checkoutCompletePage.isGreenTickDisplayed(), "The green tick is not displayed after the checkout");
         System.out.println("The green tick is displayed after the checkout");
     }
 
     @Test
-    public void testTextsDisplayedAfterCheckoutAreAsExpected(){
+    public void testTextsDisplayedAfterCheckoutAreAsExpected() {
         assertEquals(SUCCESSFUL_HEADER, checkoutCompletePage.getSuccessfulHeader(), "Success header is incorrect");
         assertEquals(SUCCESSFUL_MSG, checkoutCompletePage.getSuccessfulMessage(), "The success message is incorrect");
         System.out.println("The texts displayed after the checkout are correct");
     }
 
     @Test
-    public void testCompleteCheckoutSuccessfully(){
+    public void testCompleteCheckoutSuccessfully() {
         assertEquals(CHECKOUT_COMPL_PAGE_URL, checkoutCompletePage.getCurrentUrl(), "Error: Purchase not completed");
         System.out.println("Purchase completed successfully");
     }
 
     @Test
-    public void testBackHomeFromCheckoutCompletePage(){
+    public void testBackHomeFromCheckoutCompletePage() {
         checkoutCompletePage.clickBackHomeButton();
 
         assertEquals(PRODUCTS_PAGE_URL, loginPage.getCurrentUrl(), "The user was unable to return to the Products Page.");

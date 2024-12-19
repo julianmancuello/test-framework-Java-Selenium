@@ -7,7 +7,8 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-import static common.Utils.*;
+import static common.Utils.isEachDoubleInListPresentInPage;
+import static common.Utils.isEachStringInListPresentInPage;
 
 public class CartPage extends BasePage {
 
@@ -20,30 +21,30 @@ public class CartPage extends BasePage {
     @FindBy(id = "continue-shopping")
     WebElement continueShoppingButton;
 
-    public CartPage(WebDriver driver){
+    public CartPage(WebDriver driver) {
         super(driver);
     }
 
-    public boolean isEachSelectedProductPresentInCart(){
+    public boolean isEachSelectedProductPresentInCart() {
         List<String> selectedProductNames = ContextStore.get("selectedProductNames");
         return isEachStringInListPresentInPage(productName, selectedProductNames);
     }
 
-    public boolean isPriceOfEachSelectedProductInCartCorrect(){
+    public boolean isPriceOfEachSelectedProductInCartCorrect() {
         List<Double> selectedProductPrices = ContextStore.get("selectedProductPrices");
         return isEachDoubleInListPresentInPage(productPrice, selectedProductPrices);
     }
 
-    public boolean isProductInformationInCartCorrect(){
+    public boolean isProductInformationInCartCorrect() {
         return isEachSelectedProductPresentInCart() && isPriceOfEachSelectedProductInCartCorrect();
     }
 
-    public CheckoutInformationPage clickCheckoutButton(){
+    public CheckoutInformationPage clickCheckoutButton() {
         click(checkoutButton);
         return new CheckoutInformationPage(driver);
     }
 
-    public void clickContinueShoppingButton(){
+    public void clickContinueShoppingButton() {
         click(continueShoppingButton);
     }
 }

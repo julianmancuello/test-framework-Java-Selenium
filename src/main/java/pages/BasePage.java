@@ -22,20 +22,20 @@ public class BasePage {
     private final int STD_TIMEOUT_SEC = Integer.parseInt(ContextStore.get("std-timeout-sec"));
     private final int POLLING_EVERY_MS = Integer.parseInt(ContextStore.get("polling-every-ms"));
 
-    public BasePage(WebDriver driver){
+    public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public FluentWait<WebDriver> fluentWait(){
+    public FluentWait<WebDriver> fluentWait() {
         return new WebDriverWait(driver, Duration.ofSeconds(STD_TIMEOUT_SEC)).pollingEvery(Duration.ofMillis(POLLING_EVERY_MS));
     }
 
-    public void waitForElementToBeVisible(WebElement webElement){
+    public void waitForElementToBeVisible(WebElement webElement) {
         fluentWait().until(driver -> webElement.isDisplayed());
     }
 
-    public void customWaitForElement(By locator, int timeoutInMs, int pollingIntervalInMs){
+    public void customWaitForElement(By locator, int timeoutInMs, int pollingIntervalInMs) {
         FluentWait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofMillis(timeoutInMs))
                 .pollingEvery(Duration.ofMillis(pollingIntervalInMs))
@@ -44,31 +44,31 @@ public class BasePage {
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
     }
 
-    public void click(WebElement webElement){
+    public void click(WebElement webElement) {
         waitForElementToBeVisible(webElement);
         webElement.click();
     }
 
-    public void type(WebElement webElement, String text){
+    public void type(WebElement webElement, String text) {
         waitForElementToBeVisible(webElement);
         webElement.sendKeys(text);
     }
 
-    public String getText(WebElement webElement){
+    public String getText(WebElement webElement) {
         waitForElementToBeVisible(webElement);
         return webElement.getText();
     }
 
-    public boolean isDisplayed(WebElement webElement){
+    public boolean isDisplayed(WebElement webElement) {
         waitForElementToBeVisible(webElement);
         return webElement.isDisplayed();
     }
 
-    public String getCurrentUrl(){
+    public String getCurrentUrl() {
         return driver.getCurrentUrl();
     }
 
-    public String getPageTitle(){
+    public String getPageTitle() {
         return getText(stdPageTitle);
     }
 }

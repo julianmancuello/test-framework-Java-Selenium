@@ -4,25 +4,25 @@ import common.CommonSteps;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static data.TestData.*;
+import static data.TestData.PRODUCTS_PAGE_TITLE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ProductsTests extends CommonSteps {
 
     @BeforeEach
-    public void commonStepsForProductsTests(){
+    public void commonStepsForProductsTests() {
         productsPage = loginAndNavigateToProducts();
     }
 
     @Test
-    public void testCheckTitleOnProductsPage(){
+    public void testCheckTitleOnProductsPage() {
         assertEquals(PRODUCTS_PAGE_TITLE, productsPage.getPageTitle(), "Products page title is incorrect");
         System.out.println("Products page title is correct");
     }
 
     @Test
-    public void testAddToCartButtonChangesToRemoveAfterAddingProductToCart(){
+    public void testAddToCartButtonChangesToRemoveAfterAddingProductToCart() {
         productsPage.addToCartNRandomProducts();
 
         assertTrue(productsPage.isAddToCartButtonChangedToRemove(), "The buttons did not change to 'Remove'.");
@@ -30,7 +30,7 @@ public class ProductsTests extends CommonSteps {
     }
 
     @Test
-    public void testCartBadgeCountDisplaysTheCorrectQuantityOfSelectedProducts(){
+    public void testCartBadgeCountDisplaysTheCorrectQuantityOfSelectedProducts() {
         productsPage.addToCartNRandomProducts();
 
         assertTrue(productsPage.isCartBadgeCountEqualToQuantityOfSelectedProducts(), "The count displayed on the cart badge does not match the quantity of selected products");

@@ -3,14 +3,15 @@ package tests;
 import common.CommonSteps;
 import org.junit.jupiter.api.Test;
 
-import static data.TestData.*;
+import static data.TestData.CART_PAGE_TITLE;
+import static data.TestData.PRODUCTS_PAGE_URL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CartTests extends CommonSteps {
 
     @Test
-    public void testCheckTitleOnCartPage(){
+    public void testCheckTitleOnCartPage() {
         cartPage = goToCartWithoutAddingProducts();
 
         assertEquals(CART_PAGE_TITLE, cartPage.getPageTitle(), "Cart page title is incorrect.");
@@ -18,7 +19,7 @@ public class CartTests extends CommonSteps {
     }
 
     @Test
-    public void testProductsInformationDisplayedInCartMatchesWithSelectedProducts(){
+    public void testProductsInformationDisplayedInCartMatchesWithSelectedProducts() {
         cartPage = goToCartAddingProducts();
 
         assertTrue(cartPage.isProductInformationInCartCorrect(), "The products information in the cart do not match the selected products.");
@@ -26,7 +27,7 @@ public class CartTests extends CommonSteps {
     }
 
     @Test
-    public void testContinueShoppingFromCart(){
+    public void testContinueShoppingFromCart() {
         cartPage = goToCartWithoutAddingProducts();
         cartPage.clickContinueShoppingButton();
 

@@ -9,8 +9,8 @@ public class ContextStore {
 
     private static final Map<String, Object> context = new ConcurrentHashMap<>();
 
-    public static synchronized void put(String key, Object value){
-        if(key == null || value == null){
+    public static synchronized void put(String key, Object value) {
+        if (key == null || value == null) {
             System.out.println("Error: Key or Value cannot be null.");
             return;
         }
@@ -18,34 +18,34 @@ public class ContextStore {
     }
 
     @SuppressWarnings("unchecked")
-    public static synchronized <T> T get(String key){
+    public static synchronized <T> T get(String key) {
         Object value = context.get(key);
-        if(value == null){
+        if (value == null) {
             throw new NoSuchElementException("Key '" + key + "' not found in ContextStore.");
         }
         return (T) value;
     }
 
-    public static synchronized void loadProperties(String filePath){
+    public static synchronized void loadProperties(String filePath) {
         Properties properties = new Properties();
-        try(FileInputStream inputStream = new FileInputStream(filePath)){
+        try (FileInputStream inputStream = new FileInputStream(filePath)) {
             properties.load(inputStream);
             properties.forEach((key, value) -> put(key.toString(), value));
-        }catch(IOException e){
+        } catch (IOException e) {
             System.out.println("Error: Could not load properties from " + filePath);
             e.printStackTrace();
         }
     }
 
-    public static synchronized void remove(String key){
+    public static synchronized void remove(String key) {
         context.remove(key);
     }
 
-    public static synchronized Set<String> keys(){
+    public static synchronized Set<String> keys() {
         return Collections.unmodifiableSet(context.keySet());
     }
 
-    public static synchronized void clear(){
+    public static synchronized void clear() {
         context.clear();
     }
 }

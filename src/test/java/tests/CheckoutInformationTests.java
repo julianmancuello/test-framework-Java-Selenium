@@ -1,12 +1,15 @@
 package tests;
 
 import common.CommonSteps;
+import extensions.TestExecutionLogger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import static data.TestData.CHECKOUT_INFO_PAGE_TITLE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@ExtendWith(TestExecutionLogger.class)
 public class CheckoutInformationTests extends CommonSteps {
 
     @BeforeEach

@@ -1,7 +1,8 @@
 package tests;
 
 import common.CommonSteps;
-import extensions.TestExecutionLogger;
+import extensions.AfterTestExecutionLogger;
+import extensions.BeforeTestExecutionLogger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,7 +11,7 @@ import static data.TestData.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@ExtendWith(TestExecutionLogger.class)
+@ExtendWith({BeforeTestExecutionLogger.class, AfterTestExecutionLogger.class})
 public class CheckoutCompleteTests extends CommonSteps {
 
     @BeforeEach

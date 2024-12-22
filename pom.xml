@@ -23,7 +23,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin.version}</version>
                 <configuration>
-                    <skipTests>false</skipTests>
+                    <skipTests>${skipTests}</skipTests>
                     <properties>
                         <property>
                             <name>dataproviderthreadcount</name>
@@ -44,6 +44,7 @@
         <selenium.version>4.27.0</selenium.version>
         <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
         <dataproviderthreadcount.value>3</dataproviderthreadcount.value>
+        <skipTests>false</skipTests>
     </properties>
 
     <dependencies>

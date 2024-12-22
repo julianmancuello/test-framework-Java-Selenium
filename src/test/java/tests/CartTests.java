@@ -3,6 +3,7 @@ package tests;
 import common.CommonSteps;
 import extensions.AfterTestExecutionLogger;
 import extensions.BeforeTestExecutionLogger;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -15,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CartTests extends CommonSteps {
 
     @Test
+    @Tag("smoke")
     public void testCheckTitleOnCartPage() {
         cartPage = goToCartWithoutAddingProducts();
 
@@ -23,6 +25,7 @@ public class CartTests extends CommonSteps {
     }
 
     @Test
+    @Tag("regression")
     public void testProductsInformationDisplayedInCartMatchesWithSelectedProducts() {
         cartPage = goToCartAddingProducts();
 
@@ -31,6 +34,7 @@ public class CartTests extends CommonSteps {
     }
 
     @Test
+    @Tag("regression")
     public void testContinueShoppingFromCart() {
         cartPage = goToCartWithoutAddingProducts();
         cartPage.clickContinueShoppingButton();

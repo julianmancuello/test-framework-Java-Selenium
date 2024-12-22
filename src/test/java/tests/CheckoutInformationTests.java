@@ -4,6 +4,7 @@ import common.CommonSteps;
 import extensions.AfterTestExecutionLogger;
 import extensions.BeforeTestExecutionLogger;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -19,6 +20,7 @@ public class CheckoutInformationTests extends CommonSteps {
     }
 
     @Test
+    @Tag("smoke")
     public void testCheckTitleOnCheckoutInformationPage() {
         assertEquals(CHECKOUT_INFO_PAGE_TITLE, checkoutInformationPage.getPageTitle(), "Checkout Information page title is incorrect.");
         System.out.println("Checkout Information page title is correct.");

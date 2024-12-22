@@ -27,8 +27,11 @@ jobs:
       - name: Build with Maven
         run: mvn clean install -DskipTests=true
 
+      - name: Run smoke tests
+        run: mvn clean test -Dgroups=smoke
+
       - name: Run regression tests
-        run: mvn clean test
+        run: mvn clean test -Dgroups=regression
 
       - name: Set up Git user
         if: github.event_name == 'push'

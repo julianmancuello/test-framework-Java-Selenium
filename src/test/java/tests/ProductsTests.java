@@ -4,6 +4,7 @@ import common.CommonSteps;
 import extensions.AfterTestExecutionLogger;
 import extensions.BeforeTestExecutionLogger;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -20,12 +21,14 @@ public class ProductsTests extends CommonSteps {
     }
 
     @Test
+    @Tag("smoke")
     public void testCheckTitleOnProductsPage() {
         assertEquals(PRODUCTS_PAGE_TITLE, productsPage.getPageTitle(), "Products page title is incorrect");
         System.out.println("Products page title is correct");
     }
 
     @Test
+    @Tag("regression")
     public void testAddToCartButtonChangesToRemoveAfterAddingProductToCart() {
         productsPage.addToCartNRandomProducts();
 
@@ -34,6 +37,7 @@ public class ProductsTests extends CommonSteps {
     }
 
     @Test
+    @Tag("regression")
     public void testCartBadgeCountDisplaysTheCorrectQuantityOfSelectedProducts() {
         productsPage.addToCartNRandomProducts();
 

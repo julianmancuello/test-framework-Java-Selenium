@@ -38,9 +38,9 @@ public class Hooks {
     private ChromeOptions setChromeOptions() {
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));
-        options.addArguments("--start-maximized");
-        //options.addArguments("--headless");
-        //options.addArguments("--disable-gpu");
+        //options.addArguments("--start-maximized");
+        options.addArguments("--headless");
+        options.addArguments("--disable-gpu");
         return options;
     }
 }

@@ -22,7 +22,7 @@ public class LoginTests extends CommonSteps {
 
     @Test
     public void testLoginSuccessfulWithValidCredentials() {
-        loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
+        loginPage.loginUser(USER_STANDARD, MASTER_PASSWORD);
 
         assertEquals(PRODUCTS_PAGE_URL, loginPage.getCurrentUrl(), "Login failed, user was unable to log in");
         System.out.println("User has successfully logged in");
@@ -30,7 +30,7 @@ public class LoginTests extends CommonSteps {
 
     @Test
     public void testLoginAttemptWithInvalidCredentialsDisplaysErrorIconsAndMessage() {
-        loginPage.fillLoginForm(generateRandomAlphanumericString(10, 15), generateRandomAlphanumericString(10, 20));
+        loginPage.loginUser(generateRandomAlphanumericString(10, 15), generateRandomAlphanumericString(10, 20));
 
         assertTrue(loginPage.isErrorIconCountEqualToExpectedQuantity(), "Error icons are not displayed");
         assertEquals(LOGIN_FAILED_MSG, loginPage.getLoginErrorMessage(), "Error message do not match");

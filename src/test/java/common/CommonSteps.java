@@ -14,7 +14,7 @@ public class CommonSteps extends Hooks {
     protected CheckoutCompletePage checkoutCompletePage;
 
     protected ProductsPage loginAndNavigateToProducts() {
-        return loginPage.fillLoginForm(USER_STANDARD, MASTER_PASSWORD);
+        return loginPage.loginUser(USER_STANDARD, MASTER_PASSWORD);
     }
 
     protected CartPage goToCartAddingProducts() {

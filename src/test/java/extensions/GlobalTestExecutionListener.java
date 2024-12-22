@@ -7,6 +7,8 @@ import org.junit.platform.launcher.TestPlan;
 import org.junit.platform.launcher.listeners.SummaryGeneratingListener;
 import org.junit.platform.launcher.listeners.TestExecutionSummary;
 
+import static extensions.ReportFormat.*;
+
 public class GlobalTestExecutionListener extends SummaryGeneratingListener implements TestExecutionListener {
 
     @Override
@@ -20,13 +22,13 @@ public class GlobalTestExecutionListener extends SummaryGeneratingListener imple
 
         TestExecutionSummary summary = this.getSummary();
 
-        System.out.println("---------------------------------------------------");
-        System.out.println("---------- Global Test Execution Summary ----------");
-        System.out.printf("Tests executed: %d%n", summary.getTestsStartedCount());
-        System.out.printf("Tests successful: %d%n", summary.getTestsSucceededCount());
-        System.out.printf("Tests failed: %d%n", summary.getTestsFailedCount());
-        System.out.printf("Tests aborted: %d%n", summary.getTestsAbortedCount());
-        System.out.printf("Tests disabled: %d%n", summary.getTestsSkippedCount());
-        System.out.println("---------------------------------------------------");
+        System.out.println(PINK_BOLD + "\n---------------------------------------------------");
+        System.out.println("---------- Global Test Execution Summary ----------" + RESET);
+        System.out.printf(BOLD + "Tests executed: %d%n" + RESET, summary.getTestsStartedCount());
+        System.out.printf(GREEN_BOLD + "Tests successful: %d%n" + RESET, summary.getTestsSucceededCount());
+        System.out.printf(RED_BOLD + "Tests failed: %d%n" + RESET, summary.getTestsFailedCount());
+        System.out.printf(PEACH_BOLD + "Tests aborted: %d%n" + RESET, summary.getTestsAbortedCount());
+        System.out.printf(YELLOW_BOLD + "Tests disabled: %d%n" + RESET, summary.getTestsSkippedCount());
+        System.out.println(PINK_BOLD + "---------------------------------------------------" + RESET);
     }
 }

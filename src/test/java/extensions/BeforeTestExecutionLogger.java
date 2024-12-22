@@ -3,10 +3,9 @@ package extensions;
 import org.junit.jupiter.api.extension.BeforeTestExecutionCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 
-public class BeforeTestExecutionLogger implements BeforeTestExecutionCallback {
+import static extensions.ReportFormat.*;
 
-    private static final String ANSI_RESET = "\u001B[0m";
-    private static final String ANSI_MAGENTA_BOLD = "\u001B[1;35m";
+public class BeforeTestExecutionLogger implements BeforeTestExecutionCallback {
 
     private static int testCounter = 1;
 
@@ -14,7 +13,7 @@ public class BeforeTestExecutionLogger implements BeforeTestExecutionCallback {
     public void beforeTestExecution(ExtensionContext context) {
         String testName = context.getDisplayName();
         System.out.println("----------------------------------------------------");
-        System.out.printf(ANSI_MAGENTA_BOLD + "Running Test #%d: %s%n" + ANSI_RESET, testCounter++, testName);
+        System.out.printf(MAGENTA_BOLD + "Running Test #%d: %s%n" + RESET, testCounter++, testName);
         System.out.println("----------------------------------------------------");
     }
 }

@@ -16,6 +16,45 @@
                 <directory>src/test/resources</directory>
             </testResource>
         </testResources>
+
+        <plugins>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                <version>${maven.compiler.plugin.version}</version>-->
+<!--                <configuration>-->
+<!--                    <source>${maven.compiler.version}</source>-->
+<!--                    <target>${maven.compiler.version}</target>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-jar-plugin</artifactId>-->
+<!--                <version>3.3.0</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>test-jar</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin.version}</version>
+                <configuration>
+                    <skipTests>false</skipTests>
+                    <properties>
+                        <property>
+                            <name>dataproviderthreadcount</name>
+                            <value>${dataproviderthreadcount.value}</value>
+                        </property>
+                    </properties>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <properties>
@@ -24,6 +63,10 @@
         <maven.compiler.source>20</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium.version>4.27.0</selenium.version>
+<!--        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>-->
+        <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
+        <dataproviderthreadcount.value>3</dataproviderthreadcount.value>
+<!--        <maven.compiler.version>17</maven.compiler.version>-->
     </properties>
 
     <dependencies>

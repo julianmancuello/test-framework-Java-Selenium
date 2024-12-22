@@ -11,25 +11,13 @@
     <url>http://maven.apache.org</url>
 
     <build>
-        <testResources>
-            <testResource>
-                <directory>src/test/resources</directory>
-            </testResource>
-        </testResources>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven.surefire.plugin.version}</version>
+                <version>3.5.2</version>
                 <configuration>
                     <skipTests>${skipTests}</skipTests>
-                    <properties>
-                        <property>
-                            <name>dataproviderthreadcount</name>
-                            <value>${dataproviderthreadcount.value}</value>
-                        </property>
-                    </properties>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
@@ -37,13 +25,10 @@
     </build>
 
     <properties>
-        <!-- Java Compiler -->
         <maven.compiler.target>20</maven.compiler.target>
         <maven.compiler.source>20</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium.version>4.27.0</selenium.version>
-        <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
-        <dataproviderthreadcount.value>3</dataproviderthreadcount.value>
         <skipTests>false</skipTests>
     </properties>
 

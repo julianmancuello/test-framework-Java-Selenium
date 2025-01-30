@@ -15,4 +15,3 @@ public class BeforeTestExecutionLogger implements BeforeTestExecutionCallback {
         System.out.println("----------------------------------------------------");
     }
 }
-//test

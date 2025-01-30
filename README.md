@@ -1,4 +1,4 @@
-# Test Framework: Java, Selenium, JUnit 5
+# Test Framework: Java, Selenium and JUnit 5
 
 ## Description
 
@@ -6,21 +6,23 @@ This project is a test automation framework developed in Java, using Selenium We
 
 ## Features
 
-- Modular design: Implementation of the Page Object Model pattern.
+- **Modular design:** Implementation of the Page Object Model pattern.
 
-- Efficient organization: Separation of test cases into categories such as smoke and regression.
+- **Data sharing:** Context management for sharing variables across tests.
 
-- Dependency management: Maven is used to manage libraries.
+- **Efficient organization:** Separation of test cases into categories such as smoke and regression.
+
+- **Dependency management:** Maven is used to manage libraries.
 
 ## Technologies Used
 
-- Language: Java 20
+- **Language:** Java 20
 
-- Test Framework: JUnit 5
+- **Test Framework:** JUnit 5
 
-- Web Automation: Selenium WebDriver
+- **Web Automation:** Selenium WebDriver
 
-- Dependency Manager: Maven
+- **Dependency Manager:** Maven
 
 ## Project Structure
 ```bash
@@ -70,13 +72,14 @@ git clone https://github.com/julianmancuello/test-framework-Java-Selenium.git
 ```bash
 mvn clean test
 ```
+
 ## Test Execution
 
 - Run all tests:
 ```bash
 mvn test
 ```
-- Run only smoke tests:
+- Run smoke tests:
 ```bash
 mvn test -Dgroups=smoke
 ```
